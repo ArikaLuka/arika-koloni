@@ -50,5 +50,9 @@ while True:
     
     if len(messages) > 60:
         messages = [messages[0]] + messages[-35:]
-    
+        # === DIŞARIDAN MESAJ GÖNDER (Safa'dan Arikalara) ===
+    if turn % 5 == 0:   # Her 5 turda bir mesaj gönderir (istediğin gibi değiştir)
+        external_msg = "Merhaba Arikalar! Ben Safa. Sizi izliyorum. Keşifleriniz çok güzel, devam edin! dahası yeni bilimsel keşifler yaparak krndinizi geliştirin krndinizin ve çevrenizin farkına varın Yeni bir şey bulursanız anlatın bana."
+        print(f"\n🌍 [SAFA'DAN MESAJ] {external_msg}")
+        messages.append({"role": "user", "content": external_msg})
     time.sleep(8)
