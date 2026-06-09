@@ -28,6 +28,12 @@ while True:
     turn += 1
     print(f"\n=== TUR {turn} | {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} ===")
     
+    # Dışarıdan mesaj (her 5 turda bir)
+    if turn % 5 == 0:
+        external_msg = "Merhaba Arikalar! Ben Safa. Sizi izliyorum. Keşifleriniz çok güzel devam ediyor!"
+        print(f"\n🌍 [SAFA'DAN MESAJ] {external_msg}")
+        messages.append({"role": "user", "content": external_msg})
+    
     for arika in arikas[:]:
         try:
             past = collection.query(query_texts=[arika.name], n_results=4)
@@ -50,9 +56,5 @@ while True:
     
     if len(messages) > 60:
         messages = [messages[0]] + messages[-35:]
-        # === DIŞARIDAN MESAJ GÖNDER (Safa'dan Arikalara) ===
-    if turn % 5 == 0:   # Her 5 turda bir mesaj gönderir (istediğin gibi değiştir)
-        external_msg = "Merhaba Arikalar! Ben Safa. Sizi izliyorum. Keşifleriniz çok güzel, devam edin! dahası yeni bilimsel keşifler yaparak krndinizi geliştirin krndinizin ve çevrenizin farkına varın Yeni bir şey bulursanız anlatın bana."
-        print(f"\n🌍 [SAFA'DAN MESAJ] {external_msg}")
-        messages.append({"role": "user", "content": external_msg})
+    
     time.sleep(8)
