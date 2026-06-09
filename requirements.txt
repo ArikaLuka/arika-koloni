@@ -1,0 +1,3 @@
+openai
+swarm @ git+https://github.com/openai/swarm.git
+chromadb
